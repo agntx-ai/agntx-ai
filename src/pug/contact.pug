@@ -1,0 +1,115 @@
+html(lang="en")
+  head
+    title AGNTX ai
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap")
+    link(rel="stylesheet" href="css/tailwind/tailwind.min.css")
+    link(rel="icon" type="image/png" sizes="32x32" href="agntx-title.png")
+    script(src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer="defer")
+  body(class="antialiased bg-body text-body font-body")
+    div(class="")
+      div
+        div
+          div
+            div(x-data="{ mobileNavOpen: false, dropdown: false }" class="bg-black")
+              nav(class="relative px-12 py-5")
+                div(class="flex items-center justify-between")
+                  a(class="relative z-10 pr-4 lg:pr-0" href="index.html")
+                    img(class="h-9" src="images/agntx-logo.png" alt="")
+                  //- Desktop Navigation
+                  ul(class="hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:transform xl:-translate-y-1/2 xl:-translate-x-1/2 xl:flex lg:justify-center gap-14")
+                    li
+                      a(href="about.html", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") About
+                    li
+                      a(href="index.html#learn-more", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") Services
+                    li
+                      a(href="#", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") Blog
+
+                  //- Mobile Menu Button (Burger Icon)
+                  button(@click="mobileNavOpen = !mobileNavOpen" class="xl:hidden text-white focus:outline-none z-20")
+                    svg(xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                      path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+
+                //- Mobile Dropdown Menu
+                div(x-show="mobileNavOpen" class="xl:hidden bg-white/10 backdrop-blur-md shadow-lg rounded-lg overflow-hidden z-10 transition-all duration-300 ease-in-out mt-6")
+                  ul(class="flex flex-col space-y-4 p-6 text-white")
+                    li
+                      a(href="about.html", class="block text-lg font-medium hover:text-gray-300 transition") About
+                    li
+                      a(href="index.html#learn-more", class="block text-lg font-medium hover:text-gray-300 transition") Services
+                    li
+                      a(href="#", class="block text-lg font-medium hover:text-gray-300 transition") Blog
+      //- contact form
+      section(class="py-24 md:py-36 bg-gray-50")
+        div(class="container mx-auto px-4")
+          form(id="contact-form" class="max-w-4xl mx-auto")
+            h2(class="mb-24 font-heading text-4xl md:text-5xl font-bold") Curious? Ask Away!
+            div(class="flex flex-wrap -m-5 mb-5")
+              div(class="w-full md:w-1/2 p-5")
+                label(for="first-name" class="inline-block text-sm font-medium") First name
+                input(id="first-name" type="text" placeholder="Type here" required class="w-full bg-transparent h-14 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 transition duration-200")
+              div(class="w-full md:w-1/2 p-5")
+                label(for="last-name" class="inline-block text-sm font-medium") Last name
+                input(id="last-name" type="text" placeholder="Type here" required class="w-full bg-transparent h-14 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 transition duration-200")
+            div(class="flex flex-wrap -m-5 mb-5")
+              div(class="w-full md:w-1/2 p-5")
+                label(for="email" class="inline-block text-sm font-medium") Email address
+                input(id="email" type="email" placeholder="Type here" required class="w-full bg-transparent h-14 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 transition duration-200")
+            label(for="message" class="inline-block text-sm font-medium") Message
+            textarea(id="message" placeholder="Type message here" required class="w-full bg-transparent mb-18 h-14 py-4 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 overflow-hidden resize-none transition duration-200")
+            button(type="submit" class="inline-flex justify-center items-center text-center h-14 py-6 px-10 font-semibold text-white hover:text-white focus:text-white bg-black hover:bg-gray-800 focus:bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-200 transition duration-200") Send message
+      //- contact form response to g-sheet
+      script.
+        document.getElementById("contact-form").addEventListener("submit", async function(e) {
+          e.preventDefault();
+          
+          let formData = {
+            firstName: document.getElementById("first-name").value,
+            lastName: document.getElementById("last-name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+          };
+
+          try {
+            let response = await fetch("https://script.google.com/macros/s/AKfycbzmFKV1Jfltv5pdq7Qk-H5H6zhtAsenydUdNjpDnpm0oo0AtIJoecSLgjaWArMyfWA4Og/exec", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData)
+            });
+
+            let result = await response.json();
+            if (result.status === "success") {
+              alert("Message sent successfully!");
+              document.getElementById("contact-form").reset();
+            } else {
+              alert("Something went wrong. Please try again.");
+            }
+          }catch (error) {
+            console.error("Form submission error:", error);
+            alert("Error submitting form. Check the console for details.");
+          }
+        });
+      section(class="pt-0")
+          div(class="bg-black")
+            div(class="container mx-auto px-4")
+              div(class="py-6")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="w-auto p-2")
+                    img(class="h-12 w-auto" src="images/agntx-logo.png" alt="AGNTX AI Logo")
+                    p(class="text-xs text-gray-400") © 2025 All rights reserved.
+                  div(class="w-auto p-2")
+                    ul(class="flex flex-wrap gap-2")
+                      li
+                        a(href="#" class="flex items-center justify-center w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full transition duration-200")
+                          svg(width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg")
+                            path(d="M12.3731 1.20056H14.7039L9.61187 7.02038L15.6022 14.9398H10.9118L7.23814 10.1367L3.03463 14.9398H0.702494L6.14886 8.71489L0.402344 1.20056H5.21177L8.53245 5.59079L12.3731 1.20056ZM11.5551 13.5448H12.8466L4.51001 2.52235H3.12411L11.5551 13.5448Z" fill="#060918")
+                      li
+                        a(href="#" class="flex items-center justify-center w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full transition duration-200")
+                          svg(xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none")
+                            g(clip-path="url(#clip0_323_395)")
+                              path(d="M0.25 1.89813C0.25 1.35919 0.438632 0.914572 0.815878 0.564277C1.19313 0.213966 1.68356 0.0388184 2.28716 0.0388184C2.87999 0.0388184 3.35963 0.211266 3.72611 0.556193C4.10336 0.911888 4.29199 1.37536 4.29199 1.94664C4.29199 2.46401 4.10876 2.89515 3.74228 3.24007C3.36503 3.59577 2.86921 3.77362 2.25483 3.77362H2.23866C1.64583 3.77362 1.16619 3.59577 0.79971 3.24007C0.433231 2.88438 0.25 2.43706 0.25 1.89813ZM0.460183 16.0451V5.2449H4.04947V16.0451H0.460183ZM6.03813 16.0451H9.62741V10.0144C9.62741 9.63718 9.67053 9.34616 9.75676 9.14138C9.90765 8.7749 10.1367 8.46501 10.4439 8.21172C10.7511 7.95842 11.1364 7.83177 11.5999 7.83177C12.8071 7.83177 13.4107 8.64555 13.4107 10.2731V16.0451H17V9.85277C17 8.25752 16.6228 7.04763 15.8682 6.22306C15.1137 5.3985 14.1167 4.98621 12.8772 4.98621C11.4867 4.98621 10.4035 5.58443 9.62741 6.78086V6.81319H9.61125L9.62741 6.78086V5.2449H6.03813C6.05968 5.58981 6.07046 6.66228 6.07046 8.46232C6.07046 10.2623 6.05968 12.7899 6.03813 16.0451Z" fill="#060918")
+                            defs
+                              clippath(id="clip0_323_395")
+                                rect(width="16.75" height="16.0063" fill="white" transform="translate(0.25 0.0388184)")

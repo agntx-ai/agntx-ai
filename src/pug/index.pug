@@ -1,0 +1,273 @@
+html(lang="en")
+  head
+    title AGNTX ai
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap")
+    link(rel="stylesheet" href="css/tailwind/tailwind.min.css")
+    link(rel="icon" type="image/png" sizes="32x32" href="agntx-title.png")
+    script(src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer="defer")
+    //- Google Calendar Appointment Scheduling begin
+    script.
+      function openGoogleCalendarScheduler() {
+        window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cIuF90mfTiU5kjiRp04RJExT7Drg6lih-PVMOJSR5rSoTCUkOY5QN-bt-qgsj6yxdNNKXn6sR?gv=true', '_blank');
+        //- window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cIuF90mfTiU5kjiRp04RJExT7Drg6lih-PVMOJSR5rSoTCUkOY5QN-bt-qgsj6yxdNNKXn6sR?gv=true', 
+        //-         'GoogleCalendarScheduler', 
+        //-         'width=800,height=600');
+      }
+  body(class="antialiased bg-body text-body font-body")
+    div(class="")
+      div
+          section(x-data="{ mobileNavOpen: false, dropdown: false }" style="background: url('interlock-assets/gradients/gradient-header.jpg'); background-size: cover;")
+            nav(class="relative px-12 py-5")
+              div(class="flex items-center justify-between")
+                //- Logo
+                a(class="relative z-10 pr-4 lg:pr-0" href="#")
+                  img(class="h-16 w-auto" src="images/agntx-logo.png" alt="")
+
+                //- Desktop Navigation
+                ul(class="hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:transform xl:-translate-y-1/2 xl:-translate-x-1/2 xl:flex lg:justify-center gap-14")
+                  li
+                    a(href="about.html", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") About
+                  li
+                    a(href="#learn-more", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") Services
+                  li
+                    a(href="#", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") Blog
+                  li
+                    a(href="contact.html", class="text-lg text-white hover:text-gray-300 font-medium transition duration-200") Contact Us
+
+                //- Desktop "Book a Demo" Button
+                div(class="hidden xl:flex items-center gap-2")  
+                  a(class="inline-flex justify-center items-center text-center h-12 p-5 px-6 font-semibold text-white hover:text-black focus:text-black bg-transparent hover:bg-gray-50 focus:bg-gray-50 border border-gray-100 rounded-full focus:ring-4 focus:ring-gray-200 focus:ring-opacity-50 transition duration-200" 
+                    href="javascript:void(0);" onclick="openGoogleCalendarScheduler()") 
+                    | Book a Demo
+
+                //- Mobile Menu Button (Burger Icon)
+                button(@click="mobileNavOpen = !mobileNavOpen" class="xl:hidden text-white focus:outline-none z-20")
+                  svg(xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+
+              //- Mobile Dropdown Menu
+              div(x-show="mobileNavOpen" class="xl:hidden bg-white/10 backdrop-blur-md shadow-lg rounded-lg overflow-hidden z-10 transition-all duration-300 ease-in-out mt-6")
+                ul(class="flex flex-col space-y-4 p-6 text-white")
+                  li
+                    a(href="about.html", class="block text-lg font-medium hover:text-gray-300 transition") About
+                  li
+                    a(href="#learn-more", class="block text-lg font-medium hover:text-gray-300 transition") Services
+                  li
+                    a(href="#", class="block text-lg font-medium hover:text-gray-300 transition") Blog
+                  li
+                    a(href="contact.html", class="block text-lg font-medium hover:text-gray-300 transition") Contact Us
+      
+            div(class="relative")
+              div(class="flex flex-wrap")
+                div(class="w-full md:w-1/2")
+                  div(class="py-20 xl:pt-40 xl:pb-64 px-12 md:pr-0")
+                    div(class="relative z-10 max-w-3xl mx-auto")
+                      h1(class="mb-12 font-heading text-4xl md:text-5xl xl:text-6xl text-white font-bold")
+                        span(class="bg-gradient-text" style="background-clip: text;-webkit-background-clip: text;-webkit-text-fill-color: transparent") AI Agents 
+                        |                         
+                        span that scale business effortlessly.
+                      p(class="mb-16 text-xl text-white font-medium leading-relaxed") Automate workflows, enhance customer engagement, and drive growth with AI-powered agents built for efficiency
+                      div(class="flex flex-wrap items-center -m-4")
+                        div(class="w-auto p-4")
+                          a(class="inline-flex justify-center items-center text-center h-16 p-8 px-10 font-semibold text-white hover:text-white focus:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 rounded-full focus:ring-4 focus:ring-blue-200 transition duration-200" href="#learn-more") Learn More
+                          a(class="inline-flex justify-center items-center text-center h-16 p-8 px-10 font-semibold text-white hover:text-black focus:text-black bg-transparent hover:bg-gray-50 focus:bg-gray-50 border border-gray-100 rounded-full focus:ring-4 focus:ring-gray-200 focus:ring-opacity-50 transition duration-200 ml-6" href="javascript:void(0);" onclick="openGoogleCalendarScheduler()") Book a Demo 
+                      
+              // Hide the entire section on mobile and show it only on md and larger screens
+              div(class="hidden md:block px-12 md:px-0 pb-20 md:pb-0 md:max-w-5xl md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2")
+                div(class="flex flex-wrap items-end xl:justify-end -m-2 mb-2")
+                  div(class="hidden 2xl:block w-full 2xl:w-auto p-2")
+                    img(class="object-cover mx-auto rounded-3xl" style="height: 465px;" src="interlock-assets/headers/work.png" alt="")
+                  div(class="w-full xl:w-auto p-2")
+                    img(class="object-cover mx-auto rounded-tl-3xl rounded-bl-3xl" style="height: 356px;" src="interlock-assets/headers/ai.png" alt="")
+                div(class="hidden xl:flex flex-wrap xl:justify-end xl:pr-6 -m-2")
+                  div(class="w-full xl:w-auto p-2")
+                    img(class="object-cover mx-auto rounded-3xl" style="height: 222px;" src="interlock-assets/headers/phone-chat.png" alt="")
+                  div(class="w-full xl:w-auto p-2")
+                    div(class="overflow-hidden rounded-3xl")
+                      img(class="object-cover mx-auto rounded-3xl transform hover:scale-105 transition duration-500" style="height: 280px;" src="interlock-assets/headers/people.png" alt="")
+
+      
+      section(class="pb-24 md:pb-36 bg-gray-50")
+        div(class="px-4 md:px-16")
+          img(class="w-full object-cover rounded-b-3xl" style="height: 780px;" src="interlock-assets/how-it-works/pic4.jpg" alt="")
+        div(class="-mt-56")
+          div(class="container mx-auto px-4")
+            div(class="flex flex-wrap -m-2.5")
+              div(class="w-full md:w-1/3 p-2.5")
+                div(class="py-16 px-12 bg-white rounded-3xl")
+                  h2(class="mb-10 font-heading text-5xl text-blue-500 font-bold") 01
+                  h2(class="mb-6 font-heading text-3xl lg:text-4xl font-medium") 24/7 Customer Engagement
+                  p(class="text-xl text-gray-500 font-light leading-normal") Keep your customers happy with instant AI-driven responses anytime, day or night. Our intelligent chatbots engage users, answer inquiries, and provide support, boosting satisfaction and loyalty effortlessly.
+              div(class="w-full md:w-1/3 p-2.5")
+                div(class="relative md:top-12 py-16 px-12 bg-white rounded-3xl")
+                  h2(class="mb-10 font-heading text-5xl text-pink-500 font-bold") 02
+                  h2(class="mb-6 font-heading text-3xl lg:text-4xl font-medium") Automate Tasks, Save Time
+                  p(class="text-xl text-gray-500 font-light leading-normal") Let AI handle repetitive tasks like booking appointments, answering FAQs, and processing orders—freeing up your team for high-value work. More efficiency, less manual effort.
+              div(class="w-full md:w-1/3 p-2.5")
+                div(class="py-16 px-12 bg-white rounded-3xl")
+                  h2(class="mb-10 font-heading text-5xl text-orange-500 font-bold") 03
+                  h2(class="mb-6 font-heading text-3xl lg:text-4xl font-medium")  Data-Driven Business Growth
+                  p(class="text-xl text-gray-500 font-light leading-normal") Turn conversations into powerful data. Our AI agents analyze customer interactions to reveal trends, preferences, and opportunities—helping you make smarter, data-driven decisions.
+      section(id = "learn-more" class="relative py-24 md:py-36 bg-black")
+        img(class="absolute top-0 left-0 w-full h-full object-cover select-none" src="interlock-assets/gradients/gradient-how-it-work.png" alt="")
+        div(class="relative container mx-auto px-4")
+          h3(class="mb-20 font-heading text-4xl xl:text-5xl text-white text-center font-bold") How it works
+          div(class="max-w-5xl mx-auto")
+            div(class="p-12 lg:p-24 bg-white bg-opacity-5 rounded-3xl")
+              div(class="flex flex-wrap -m-6 mb-14")
+                div(class="w-full md:w-auto p-6")
+                  div(class="relative flex items-center justify-center w-18 h-18 bg-blue-500 rounded-full")
+                    div(class="hidden md:block absolute -bottom-28 -mb-3 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-10 h-24 rounded-xl" style="width: 3px;")
+                    span(class="text-3xl text-white font-medium") 1
+                div(class="w-full md:flex-1 p-6")
+                  h3(class="mb-8 font-heading text-3xl md:text-4xl text-white font-medium")  Tell Us Your Needs
+                  p(class="text-xl text-white font-light leading-normal") Book a free consultation, and we’ll analyze your business to understand where AI can make the biggest impact.
+              div(class="flex flex-wrap -m-6 mb-14")
+                div(class="w-full md:w-auto p-6")
+                  div(class="relative flex items-center justify-center w-18 h-18 bg-pink-500 rounded-full")
+                    div(class="hidden md:block absolute -bottom-28 -mb-3 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-10 h-24 rounded-xl" style="width: 3px;")
+                    span(class="text-3xl text-white font-medium") 2
+                div(class="w-full md:flex-1 p-6")
+                  h3(class="mb-8 font-heading text-3xl md:text-4xl text-white font-medium") We Build & Integrate
+                  p(class="text-xl text-white font-light leading-normal") Our experts design AI agents tailored to your business, seamlessly integrating them with your existing systems.
+              div(class="flex flex-wrap -m-6")
+                div(class="w-full md:w-auto p-6")
+                  div(class="flex items-center justify-center w-18 h-18 bg-orange-500 rounded-full")
+                    span(class="text-3xl text-white font-medium") 3
+                div(class="w-full md:flex-1 p-6")
+                  h3(class="mb-8 font-heading text-3xl md:text-4xl text-white font-medium") Automate & Grow
+                  p(class="text-xl text-white font-light leading-normal") Your AI agent starts working instantly—engaging customers, automating tasks, and providing valuable insights while you scale effortlessly.
+          div(class="flex justify-center items-center w-full mt-12")
+            a(class="inline-flex justify-center items-center text-center h-20 p-10 px-14 text-xl font-semibold text-white hover:text-white focus:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 rounded-full focus:ring-4 focus:ring-blue-200 transition duration-200" href="javascript:void(0);" onclick="openGoogleCalendarScheduler()") Book your free consultation
+  
+      section(class="py-24 md:py-36 bg-gray-50")
+        div(class="container mx-auto px-4")
+          h2(class="mb-10 font-heading text-4xl md:text-5xl text-center font-bold") AI Agent & Automation Services
+          p(class="mb-20 text-xl text-gray-500 font-medium text-center") Explore our cutting-edge AI solutions to transform your business, streamline operations, and drive growth.
+          div(class="flex flex-wrap -m-5")
+            div(class="w-full md:w-1/2 lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-orange-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/custom-bot.svg" alt="Custom AI Bot Design")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") Custom AI Bot Design
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Build intelligent, custom bots tailored to your business for seamless user interaction and efficiency.
+            div(class="w-full md:w-1/2 lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-red-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/automation.svg" alt="AI Workflow Automation")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") AI Workflow Automation
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Automate manual tasks and processes to boost productivity, efficiency, and scale your operations.
+            div(class="w-full lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-purple-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/integration.svg" alt="AI Agent Integration")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") AI Agent Integration
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Integrate AI agents into your existing systems for seamless operations across all platforms.
+            div(class="w-full md:w-1/2 lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-green-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/optimization.svg" alt="AI Agent Performance Optimization")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") AI Agent Performance Optimization
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Optimize your AI agent’s performance with data-driven improvements, enhancing efficiency and user experience.
+            div(class="w-full md:w-1/2 lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-blue-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/security.svg" alt="AI Security Solutions")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") AI Security Solutions
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Protect your business with secure AI systems and ensure safe interactions with customer data.
+            div(class="w-full lg:w-1/3 p-5")
+              div(class="px-10 py-16 h-full text-center bg-white rounded-3xl")
+                div(class="flex items-center justify-center mb-6 w-14 h-14 mx-auto bg-yellow-500 rounded-xl")
+                  img(class="h-6" src="interlock-assets/features/ecommerce.svg" alt="AI-Powered E-commerce Bots")
+                h3(class="font-heading mb-16 text-3xl font-bold leading-snug") AI-Powered
+                                                                               br
+                                                                               | E-commerce Bots
+                p(class="text-lg text-gray-500 font-medium leading-relaxed") Drive sales and customer satisfaction with AI bots designed for your e-commerce platform.
+      section(class="py-24 md:py-36 bg-black")
+        div(class="container mx-auto px-4")
+          div(class="pt-32 bg-black overflow-hidden rounded-3xl" style="background: url('interlock-assets/gradients/gradient-download.png'); background-size: cover;")
+            div(class="mb-24 max-w-3xl mx-auto text-center")
+              div(class="px-4")
+                h2(class="mb-6 font-heading md:text-4xl text-white font-medium") Start your AI journey with smart automation.
+                p(class="mb-14 md:text-lg text-white font-light leading-relaxed")
+                  | Discuss your AI agent strategy with our experts today.
+                div(class="flex flex-wrap justify-center -m-2")
+                  div(class="w-auto p-2")
+                     a(class="inline-flex justify-center items-center text-center h-20 p-10 px-14 text-xl font-semibold text-white hover:text-white focus:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 rounded-full focus:ring-4 focus:ring-blue-200 transition duration-200" href="contact.html") Let’s Chat AI
+      
+      section(class="py-24 md:py-36")
+        div(class="container mx-auto px-4")
+          div(class="flex flex-wrap xl:items-center justify-center -m-8")
+            div(class="w-full md:w-3/4 p-8")
+              h2(class="mb-10 font-heading text-4xl md:text-5xl font-bold text-center") Frequently Asked Questions
+              p(class="pb-10 mb-10 text-xl text-gray-500 font-medium leading-relaxed border-b border-gray-100 text-center") Find answers to common questions about Agntx AI and how our AI powered solutions can benefit your business.
+
+              div(x-data="{ accordion: true }", x-on:click="accordion = !accordion" class="mb-11 block cursor-pointer")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="flex-1 p-2")
+                    h3(:class="{'text-gray-500': accordion}" class="font-heading text-xl text-gray-500 font-bold transition duration-200") What is Agntx AI?
+                  div(class="w-auto p-2")
+                    span(class="inline-block transform", :class="{'text-gray-500 rotate-180': accordion, 'rotate-0': !accordion }")
+                      svg(width="14" height="8" viewbox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        path(d="M7.00003 0.499967C7.26264 0.49951 7.52275 0.550956 7.76541 0.65135C8.00808 0.751745 8.22851 0.899107 8.41403 1.08497L13.707 6.37897L12.293 7.79297L7.00003 2.49997L1.70703 7.79297L0.293031 6.37897L5.58603 1.08597Z" fill="currentColor")
+                div(x-ref="container", :style="!accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''" class="overflow-hidden h-0 duration-500")
+                  p(class="mt-2 font-medium") Agntx AI is an AI agentic solution designed to help businesses automate customer interactions, improve response times, and increase sales.
+
+              div(x-data="{ accordion: true }", x-on:click="accordion = !accordion" class="mb-11 block cursor-pointer")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="flex-1 p-2")
+                    h3(:class="{'text-gray-500': accordion}" class="font-heading text-xl text-gray-500 font-bold transition duration-200") How can an AI agent benefit my business?
+                  div(class="w-auto p-2")
+                    span(class="inline-block transform", :class="{'text-gray-500 rotate-180': accordion, 'rotate-0': !accordion }")
+                      svg(width="14" height="8" viewbox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        path(d="M7.00003 0.499967C7.26264 0.49951 7.52275 0.550956 7.76541 0.65135C8.00808 0.751745 8.22851 0.899107 8.41403 1.08497L13.707 6.37897L12.293 7.79297L7.00003 2.49997L1.70703 7.79297L0.293031 6.37897L5.58603 1.08597Z" fill="currentColor")
+                div(x-ref="container", :style="!accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''" class="overflow-hidden h-0 duration-500")
+                  p(class="mt-2 font-medium") An AI agent can help automate customer support, generate leads, and provide instant responses to customer inquiries, enhancing user experience and reducing operational costs.
+
+              div(x-data="{ accordion: true }", x-on:click="accordion = !accordion" class="mb-11 block cursor-pointer")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="flex-1 p-2")
+                    h3(:class="{'text-gray-500': accordion}" class="font-heading text-xl text-gray-500 font-bold transition duration-200") Can the agent integrate with my existing systems?
+                  div(class="w-auto p-2")
+                    span(class="inline-block transform", :class="{'text-gray-500 rotate-180': accordion, 'rotate-0': !accordion }")
+                      svg(width="14" height="8" viewbox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        path(d="M7.00003 0.499967C7.26264 0.49951 7.52275 0.550956 7.76541 0.65135C8.00808 0.751745 8.22851 0.899107 8.41403 1.08497L13.707 6.37897L12.293 7.79297L7.00003 2.49997L1.70703 7.79297L0.293031 6.37897L5.58603 1.08597Z" fill="currentColor")
+                div(x-ref="container", :style="!accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''" class="overflow-hidden h-0 duration-500")
+                  p(class="mt-2 font-medium") Yes, our agents can integrate with various platforms like CRM systems, Google Calendar, and e-commerce tools to streamline operations.
+
+              div(x-data="{ accordion: true }", x-on:click="accordion = !accordion" class="mb-11 block cursor-pointer")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="flex-1 p-2")
+                    h3(:class="{'text-gray-500': accordion}" class="font-heading text-xl text-gray-500 font-bold transition duration-200") Is there a free trial?
+                  div(class="w-auto p-2")
+                    span(class="inline-block transform", :class="{'text-gray-500 rotate-180': accordion, 'rotate-0': !accordion }")
+                      svg(width="14" height="8" viewbox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        path(d="M7.00003 0.499967C7.26264 0.49951 7.52275 0.550956 7.76541 0.65135C8.00808 0.751745 8.22851 0.899107 8.41403 1.08497L13.707 6.37897L12.293 7.79297L7.00003 2.49997L1.70703 7.79297L0.293031 6.37897L5.58603 1.08597Z" fill="currentColor")
+                div(x-ref="container", :style="!accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''" class="overflow-hidden h-0 duration-500")
+                  p(class="mt-2 font-medium") Yes, we offer a free trial so you can test our agetns and see its benefits before committing.
+      div
+        section(class="pt-0")
+          div(class="bg-black")
+            div(class="container mx-auto px-4")
+              div(class="py-6")
+                div(class="flex flex-wrap items-center justify-between -m-2")
+                  div(class="w-auto p-2")
+                    img(class="h-12 w-auto" src="images/agntx-logo.png" alt="AGNTX AI Logo")
+                    p(class="text-xs text-gray-400") © 2025 All rights reserved.
+                  div(class="w-auto p-2")
+                    ul(class="flex flex-wrap gap-2")
+                      li
+                        a(href="#" class="flex items-center justify-center w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full transition duration-200")
+                          svg(width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg")
+                            path(d="M12.3731 1.20056H14.7039L9.61187 7.02038L15.6022 14.9398H10.9118L7.23814 10.1367L3.03463 14.9398H0.702494L6.14886 8.71489L0.402344 1.20056H5.21177L8.53245 5.59079L12.3731 1.20056ZM11.5551 13.5448H12.8466L4.51001 2.52235H3.12411L11.5551 13.5448Z" fill="#060918")
+                      li
+                        a(href="#" class="flex items-center justify-center w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full transition duration-200")
+                          svg(xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none")
+                            g(clip-path="url(#clip0_323_395)")
+                              path(d="M0.25 1.89813C0.25 1.35919 0.438632 0.914572 0.815878 0.564277C1.19313 0.213966 1.68356 0.0388184 2.28716 0.0388184C2.87999 0.0388184 3.35963 0.211266 3.72611 0.556193C4.10336 0.911888 4.29199 1.37536 4.29199 1.94664C4.29199 2.46401 4.10876 2.89515 3.74228 3.24007C3.36503 3.59577 2.86921 3.77362 2.25483 3.77362H2.23866C1.64583 3.77362 1.16619 3.59577 0.79971 3.24007C0.433231 2.88438 0.25 2.43706 0.25 1.89813ZM0.460183 16.0451V5.2449H4.04947V16.0451H0.460183ZM6.03813 16.0451H9.62741V10.0144C9.62741 9.63718 9.67053 9.34616 9.75676 9.14138C9.90765 8.7749 10.1367 8.46501 10.4439 8.21172C10.7511 7.95842 11.1364 7.83177 11.5999 7.83177C12.8071 7.83177 13.4107 8.64555 13.4107 10.2731V16.0451H17V9.85277C17 8.25752 16.6228 7.04763 15.8682 6.22306C15.1137 5.3985 14.1167 4.98621 12.8772 4.98621C11.4867 4.98621 10.4035 5.58443 9.62741 6.78086V6.81319H9.61125L9.62741 6.78086V5.2449H6.03813C6.05968 5.58981 6.07046 6.66228 6.07046 8.46232C6.07046 10.2623 6.05968 12.7899 6.03813 16.0451Z" fill="#060918")
+                            defs
+                              clippath(id="clip0_323_395")
+                                rect(width="16.75" height="16.0063" fill="white" transform="translate(0.25 0.0388184)")
