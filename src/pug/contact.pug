@@ -59,7 +59,7 @@ html(lang="en")
                 input(id="email" type="email" placeholder="Type here" required class="w-full bg-transparent h-14 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 transition duration-200")
             label(for="message" class="inline-block text-sm font-medium") Message
             textarea(id="message" placeholder="Type message here" required class="w-full bg-transparent mb-18 h-14 py-4 font-semibold text-black placeholder-gray-500 outline-none border-b border-gray-200 overflow-hidden resize-none transition duration-200")
-            button(type="submit" class="inline-flex justify-center items-center text-center h-14 py-6 px-10 font-semibold text-white hover:text-white focus:text-white bg-black hover:bg-gray-800 focus:bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-200 transition duration-200") Send message
+            button(type="submit" id="submit-button" class="inline-flex justify-center items-center text-center h-14 py-6 px-10 font-semibold text-white hover:text-white focus:text-white bg-black hover:bg-gray-800 focus:bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-200 transition duration-200") Send message
       //- contact form response to g-sheet
       script.
         document.getElementById("contact-form").addEventListener("submit", async function (e) {
@@ -71,20 +71,36 @@ html(lang="en")
           formData.append("email", document.getElementById("email").value);
           formData.append("message", document.getElementById("message").value);
 
+          let submitButton = document.getElementById("submit-button");
+          submitButton.disabled = true;  // Prevent multiple submissions
+          submitButton.innerText = "Sending...";  // Instant user feedback
+
           try {
-            let response = await fetch("https://script.google.com/macros/s/AKfycbzhS0Ua0qmGF6CB2vpgVsO-v937D4f55ih5-rvt_-jQU3z-HZWdJ01qXppcNh434apaWQ/exec", {
+            //Send request in the background
+            fetch("https://script.google.com/macros/s/AKfycbx6j3j991E_YiASOgstdbO6sjom5hJFDDbEoc6kpZcSeSlPNKbERh_wCPiFPFfj2LxyIA/exec", {
               method: "POST",
-              mode: "no-cors", 
-              body: formData,   
+              mode: "no-cors",  //Prevents preflight and speeds up response
+              body: formData,
             });
 
-            alert("Message sent successfully!"); // Success message (no response verification in no-cors mode)
-            document.getElementById("contact-form").reset();
+            //Show instant success feedback (even before Google Sheets updates)
+            submitButton.innerText = "Hang tight... 📩";
+
+            
+            setTimeout(() => {
+              alert("✅ Got it! We'll review your request and get back to you soon.");
+              submitButton.innerText = "Send Message";
+              submitButton.disabled = false;
+              document.getElementById("contact-form").reset();
+            }, 2000);
           } catch (error) {
             console.error("Form submission error:", error);
-            alert("Error submitting form. Check the console for details.");
+            alert("⚠️ Something went wrong on our end. We're on it! Please try again.");
+            submitButton.innerText = "Send Message";
+            submitButton.disabled = false;
           }
         });
+
 
 
       section(class="pt-0")
