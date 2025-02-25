@@ -68,35 +68,31 @@
         </div>
       </section>
       <script>
-        document.getElementById("contact-form").addEventListener("submit", async function(e) {
+        document.getElementById("contact-form").addEventListener("submit", async function (e) {
           e.preventDefault();
-          
-          let formData = {
-            firstName: document.getElementById("first-name").value,
-            lastName: document.getElementById("last-name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value
-          };
+        
+          let formData = new FormData();
+          formData.append("firstName", document.getElementById("first-name").value);
+          formData.append("lastName", document.getElementById("last-name").value);
+          formData.append("email", document.getElementById("email").value);
+          formData.append("message", document.getElementById("message").value);
         
           try {
-            let response = await fetch("https://script.google.com/macros/s/AKfycbzmFKV1Jfltv5pdq7Qk-H5H6zhtAsenydUdNjpDnpm0oo0AtIJoecSLgjaWArMyfWA4Og/exec", {
+            let response = await fetch("https://script.google.com/macros/s/AKfycbzhS0Ua0qmGF6CB2vpgVsO-v937D4f55ih5-rvt_-jQU3z-HZWdJ01qXppcNh434apaWQ/exec", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData)
+              mode: "no-cors", 
+              body: formData,   
             });
         
-            let result = await response.json();
-            if (result.status === "success") {
-              alert("Message sent successfully!");
-              document.getElementById("contact-form").reset();
-            } else {
-              alert("Something went wrong. Please try again.");
-            }
-          }catch (error) {
+            alert("Message sent successfully!"); // Success message (no response verification in no-cors mode)
+            document.getElementById("contact-form").reset();
+          } catch (error) {
             console.error("Form submission error:", error);
             alert("Error submitting form. Check the console for details.");
           }
         });
+        
+        
       </script>
       <section class="pt-0">
         <div class="bg-black">
